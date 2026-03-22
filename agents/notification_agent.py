@@ -12,7 +12,7 @@ def notification_agent(state):
     #### Presently this is printing the KB articles which has matched the incident description
     #### We can alter this logic to send email only if nothing matched to identify the uniqueness of this issue.
     #### We need to write HTML and use SMTP server here to actually send the email to the recipients.
-    
-    send_email(body)
+    if (len(state["kb_results"]) == 0):
+      send_email(body)
 
     return state
