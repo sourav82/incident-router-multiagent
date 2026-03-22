@@ -3,9 +3,9 @@ from config.settings import *
 import logging
 import random
 
-SERVICENOW_URL="https://dev318742.service-now.com/"
-SERVICENOW_USER="admin"
-SERVICENOW_PASSWORD="P1dUPgNg8v=-"
+SERVICENOW_URL=os.environ.get("SERVICENOW_URL")
+SERVICENOW_USER=os.environ.get("SERVICENOW_USER")
+SERVICENOW_PASSWORD=os.environ.get("SERVICENOW_PASSWORD")
 
 def get_group_members(group_sys_id):
     url = f"{SERVICENOW_URL}/api/now/table/sys_user_grmember"

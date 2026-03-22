@@ -9,6 +9,10 @@ def notification_agent(state):
     for doc in state["kb_results"]:
         body += f"{doc.page_content}\n"
 
+    #### Presently this is printing the KB articles which has matched the incident description
+    #### We can alter this logic to send email only if nothing matched to identify the uniqueness of this issue.
+    #### We need to write HTML and use SMTP server here to actually send the email to the recipients.
+    
     send_email(body)
 
     return state
