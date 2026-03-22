@@ -4,4 +4,4 @@ graph = build_graph()
 
 print("\nAgent Workflow:\n")
 
-graph.get_graph().print_ascii()
+print(graph.get_graph().draw_mermaid())
