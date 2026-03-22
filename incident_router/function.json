@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "scriptFile": "__init__.py",
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["post"],
+      "route": "incident-router"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}

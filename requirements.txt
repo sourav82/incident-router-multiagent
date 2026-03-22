@@ -1,0 +1,17 @@
+azure-functions
+requests
+
+langchain
+langchain-core
+langchain-openai
+langchain-community
+
+chromadb
+
+python-dotenv
+
+tiktoken
+pydantic
+
+langgraph
+azure-identity
