@@ -36,10 +36,25 @@ def search_similar(description):
     logging.info(f"Persist directory exists: {os.path.exists('/tmp/vectordb')}")
     logging.info(f"Contents of /tmp/vectordb: {os.listdir('/tmp/vectordb')}")
 
-    results = vector_store.similarity_search(
+    results = vector_store.similarity_search_with_score(
         description,
         k=5
     )
-    logging.info(f"Found {len(results)} results")
 
-    return results
+    filtered = []
+
+    for i, (doc, score) in enumerate(results):
+        logging.info(f"Match {i+1} score: {score}")
+        logging.info(f"Metadata: {doc.metadata}")
+        logging.info(f"Preview: {doc.page_content[:150]}")
+        #### Chroma similarity score for semantic search is better when the score is close to 0. 
+        # Higher the score, the distance is more, therefore similarity is less
+        # As we do not have many samples, for this example we are considering the results which have score less than 1
+        # But, in practical, this should be much less, may be worth considering if the score is less than 0.4 
+        if score < 1:
+            filtered.append(doc)
+
+
+    logging.info(f"Found {len(filtered)} filtered")
+
+    return filtered
